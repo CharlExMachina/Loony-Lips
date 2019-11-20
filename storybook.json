@@ -1,0 +1,22 @@
+[
+    {
+        "prompts": ["a name", "an animal", "a place", "a song", "a movie", "a character"],
+        "story": "Once, %s looked for a %s to take as a companion to go to %s. On the road, they listened %s and watched %s along with %s"
+    },
+    {
+        "prompts": ["a character", "a verb in infinitive form", "a super power", "a species", "a verb", "a fictional world"],
+        "story": "Don't you hate when %s starts %s and uses his new power of %s to make %s %s and escape to %s"
+    },
+    {
+        "prompts": ["a profession", "a body part"],
+        "story": "I used to be a %s like you, but then I took an arrow to the %s"
+    },
+    {
+        "prompts": ["a gender in plural", "a verb in infinitive form", "another verb in infinitive form", "an emotion", "a concept in plural", "a person"],
+        "story": "Many %s that are %s and %s speak of %s but their still second-guessing. Hollow vows even %s broken. Every face and voice, brings memories of %s"
+    },
+    {
+        "prompts": ["a fictional place", "a fictional creature in plural"],
+        "story": "Yes, indeed. They called it %s. A land far to the north, home of the everlasting %s. But a pity hollow like you wouldn't understand that, ha ha ha..."
+    }
+]

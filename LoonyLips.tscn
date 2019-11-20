@@ -1,0 +1,118 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://LoonyLips.gd" type="Script" id=1]
+[ext_resource path="res://gfx/blackboard.jpg" type="Texture" id=2]
+[ext_resource path="res://gfx/Feltpen.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://PlayerInput.gd" type="Script" id=4]
+[ext_resource path="res://gfx/blue_button11.png" type="Texture" id=5]
+[ext_resource path="res://gfx/blue_button12.png" type="Texture" id=6]
+[ext_resource path="res://Story.gd" type="Script" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+size = 40
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 30
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 40
+font_data = ExtResource( 3 )
+
+[node name="LoonyLips" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+intro_text = "Welcome to Loony Lips!
+
+In this game, YOU will write a story based on prompts the game will throw to you! Press enter to start writing a story!"
+
+[node name="Background" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 2 )
+expand = true
+
+[node name="UIContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 24.0
+margin_top = 24.0
+margin_right = -24.0
+margin_bottom = -24.0
+alignment = 2
+
+[node name="Story" type="Label" parent="UIContainer"]
+margin_right = 976.0
+margin_bottom = 473.0
+rect_min_size = Vector2( 0, 450 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 1 )
+text = "Placeholder"
+autowrap = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UIContainer"]
+margin_top = 477.0
+margin_right = 976.0
+margin_bottom = 552.0
+grow_horizontal = 0
+custom_constants/separation = 24
+
+[node name="PlayerInput" type="LineEdit" parent="UIContainer/HBoxContainer"]
+margin_right = 769.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 0, 75 )
+hint_tooltip = "Write something..."
+size_flags_horizontal = 3
+size_flags_vertical = 0
+custom_fonts/font = SubResource( 2 )
+placeholder_text = "Write something..."
+script = ExtResource( 4 )
+
+[node name="TextureButton" type="TextureButton" parent="UIContainer/HBoxContainer"]
+margin_left = 793.0
+margin_right = 868.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 75, 75 )
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 6 )
+expand = true
+
+[node name="Label" type="Label" parent="UIContainer/HBoxContainer"]
+margin_left = 892.0
+margin_top = 6.0
+margin_right = 976.0
+margin_bottom = 69.0
+custom_fonts/font = SubResource( 3 )
+text = "OK!"
+
+[node name="StoryBook" type="Node" parent="."]
+
+[node name="Story0" type="Node" parent="StoryBook"]
+script = ExtResource( 7 )
+prompts = PoolStringArray( "a name", "an animal", "a place", "a song", "a movie", "a character" )
+story = "Once, %s looked for a %s to take as a companion to go to %s. On the road, they listened %s and watched %s along with %s"
+
+[node name="Story1" type="Node" parent="StoryBook"]
+script = ExtResource( 7 )
+prompts = PoolStringArray( "a character", "a verb in infinitive form", "a super power", "a species in plural form", "a verb", "a fictional world" )
+story = "Don't you hate when %s starts %s and uses his new power of %s to make %s %s and escape to %s"
+
+[node name="Story2" type="Node" parent="StoryBook"]
+script = ExtResource( 7 )
+prompts = PoolStringArray( "a profession", "a body part" )
+story = "I used to be a %s like you, but then I took an arrow to the %s"
+
+[node name="Story3" type="Node" parent="StoryBook"]
+script = ExtResource( 7 )
+prompts = PoolStringArray( "a gender in plural", "a verb in infinitive form", "another verb in infinitive form", "an emotion", "a concept in plural", "a person" )
+story = "Many %s that are %s and %s speak of %s but their still second-guessing. Hollow vows even %s broken. Every face and voice, brings memories of %s"
+
+[node name="Story4" type="Node" parent="StoryBook"]
+script = ExtResource( 7 )
+prompts = PoolStringArray( "a fictional place", "a fictional creature in plural" )
+story = "Yes, indeed. They called it %s. A land far to the north, home of the everlasting %s. But a pity hollow like you wouldn't understand that, ha ha ha..."
+[connection signal="text_entered" from="UIContainer/HBoxContainer/PlayerInput" to="." method="_on_PlayerInput_text_entered"]
+[connection signal="pressed" from="UIContainer/HBoxContainer/TextureButton" to="." method="_on_TextureButton_pressed"]
